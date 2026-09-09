@@ -528,104 +528,66 @@ nav{position:fixed;left:0;right:0;z-index:200;height:52px;display:flex;align-ite
     </div>
     <!-- Scrollable UGC strip -->
     <div id="ugcStrip" style="display:flex;gap:16px;overflow-x:auto;scroll-behavior:smooth;padding:0 max(24px,calc((100vw - 1200px)/2));scrollbar-width:none;-ms-overflow-style:none;cursor:grab" onmousedown="ugcDragStart(event)" onmousemove="ugcDragMove(event)" onmouseup="ugcDragEnd()" onmouseleave="ugcDragEnd()">
-
-      <!-- UGC Card 1 -->
-      <div style="flex:0 0 300px;border-radius:20px;overflow:hidden;background:var(--k);position:relative;aspect-ratio:9/16;max-height:520px">
-        <div style="width:100%;height:100%;background:linear-gradient(160deg,#1a1a2e,#16213e);display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative">
-          <!-- Play button -->
-          <div style="width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,0.15);backdrop-filter:blur(8px);border:2px solid rgba(255,255,255,0.3);display:flex;align-items:center;justify-content:center;cursor:pointer;margin-bottom:16px">
-            <div style="width:0;height:0;border-top:12px solid transparent;border-bottom:12px solid transparent;border-left:20px solid #fff;margin-left:4px"></div>
-          </div>
-          <!-- Floating molecule SVG -->
-          <svg width="120" height="120" viewBox="0 0 120 120" style="opacity:0.08;position:absolute;top:20px;right:20px" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="60" cy="60" r="12" fill="#0BBFA0"/>
-            <circle cx="20" cy="30" r="8" fill="#3B7FDD"/>
-            <circle cx="100" cy="30" r="8" fill="#3B7FDD"/>
-            <circle cx="20" cy="90" r="8" fill="#3B7FDD"/>
-            <circle cx="100" cy="90" r="8" fill="#3B7FDD"/>
-            <line x1="60" y1="60" x2="20" y2="30" stroke="#0BBFA0" stroke-width="2"/>
-            <line x1="60" y1="60" x2="100" y2="30" stroke="#0BBFA0" stroke-width="2"/>
-            <line x1="60" y1="60" x2="20" y2="90" stroke="#0BBFA0" stroke-width="2"/>
-            <line x1="60" y1="60" x2="100" y2="90" stroke="#0BBFA0" stroke-width="2"/>
-          </svg>
-          <!-- Bottom info -->
-          <div style="position:absolute;bottom:0;left:0;right:0;padding:20px 16px;background:linear-gradient(transparent,rgba(0,0,0,0.8))">
-            <div style="display:flex;gap:4px;margin-bottom:6px"><span style="color:#F59E0B;font-size:12px">★★★★★</span></div>
-            <div style="font-size:13px;font-weight:600;color:#fff;margin-bottom:2px">Thomas R.</div>
-            <div style="font-size:11px;color:rgba(255,255,255,0.5)">Chercheur · Paris</div>
-            <p style="font-size:12px;color:rgba(255,255,255,0.75);line-height:1.5;margin-top:8px">"COA reçu en 2h. Pureté 99.3% confirmée. La référence en France."</p>
-          </div>
-        </div>
+      <!-- TikTok Card 1 -->
+      <div style="flex:0 0 325px;border-radius:20px;overflow:hidden;background:#000;position:relative;min-height:580px;display:flex;align-items:flex-start;justify-content:center">
+        <blockquote class="tiktok-embed" cite="https://vm.tiktok.com/ZN82xssUQ/" data-video-id="" style="max-width:325px;min-width:325px;border:none;margin:0;padding:0">
+          <section style="background:#111;border-radius:20px;display:flex;align-items:center;justify-content:center;min-height:580px">
+            <a href="https://vm.tiktok.com/ZN82xssUQ/" target="_blank" style="color:#fff;text-decoration:none;font-size:13px;text-align:center;padding:20px">
+              Voir sur TikTok
+            </a>
+          </section>
+        </blockquote>
       </div>
-
-      <!-- UGC Card 2 -->
-      <div style="flex:0 0 300px;border-radius:20px;overflow:hidden;background:var(--k);position:relative;aspect-ratio:9/16;max-height:520px">
-        <div style="width:100%;height:100%;background:linear-gradient(160deg,#0d1f35,#0a1628);display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative">
-          <div style="width:64px;height:64px;border-radius:50%;background:rgba(11,191,160,0.2);backdrop-filter:blur(8px);border:2px solid rgba(11,191,160,0.4);display:flex;align-items:center;justify-content:center;cursor:pointer;margin-bottom:16px">
-            <div style="width:0;height:0;border-top:12px solid transparent;border-bottom:12px solid transparent;border-left:20px solid #0BBFA0;margin-left:4px"></div>
-          </div>
-          <svg width="100" height="100" viewBox="0 0 100 100" style="opacity:0.06;position:absolute;top:30px;left:20px" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="50" cy="50" r="20" stroke="#0BBFA0" stroke-width="2"/>
-            <circle cx="50" cy="50" r="35" stroke="#3B7FDD" stroke-width="1"/>
-            <circle cx="50" cy="15" r="5" fill="#0BBFA0"/>
-            <circle cx="50" cy="85" r="5" fill="#0BBFA0"/>
-            <circle cx="15" cy="50" r="5" fill="#3B7FDD"/>
-            <circle cx="85" cy="50" r="5" fill="#3B7FDD"/>
-          </svg>
-          <div style="position:absolute;bottom:0;left:0;right:0;padding:20px 16px;background:linear-gradient(transparent,rgba(0,0,0,0.85))">
-            <div style="display:flex;gap:4px;margin-bottom:6px"><span style="color:#F59E0B;font-size:12px">★★★★★</span></div>
-            <div style="font-size:13px;font-weight:600;color:#fff;margin-bottom:2px">Marc L.</div>
-            <div style="font-size:11px;color:rgba(255,255,255,0.5)">Biologiste · Lyon</div>
-            <p style="font-size:12px;color:rgba(255,255,255,0.75);line-height:1.5;margin-top:8px">"Livraison 36h, isotherme parfait. Première source fiable que j'utilise en régulier."</p>
-          </div>
-        </div>
+      <!-- TikTok Card 2 -->
+      <div style="flex:0 0 325px;border-radius:20px;overflow:hidden;background:#000;position:relative;min-height:580px;display:flex;align-items:flex-start;justify-content:center">
+        <blockquote class="tiktok-embed" cite="https://vm.tiktok.com/ZN82xwQPb/" data-video-id="" style="max-width:325px;min-width:325px;border:none;margin:0;padding:0">
+          <section style="background:#111;border-radius:20px;display:flex;align-items:center;justify-content:center;min-height:580px">
+            <a href="https://vm.tiktok.com/ZN82xwQPb/" target="_blank" style="color:#fff;text-decoration:none;font-size:13px;text-align:center;padding:20px">
+              Voir sur TikTok
+            </a>
+          </section>
+        </blockquote>
       </div>
-
-      <!-- UGC Card 3 -->
-      <div style="flex:0 0 300px;border-radius:20px;overflow:hidden;background:var(--k);position:relative;aspect-ratio:9/16;max-height:520px">
-        <div style="width:100%;height:100%;background:linear-gradient(160deg,#1a1428,#0d1020);display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative">
-          <div style="width:64px;height:64px;border-radius:50%;background:rgba(59,127,221,0.2);backdrop-filter:blur(8px);border:2px solid rgba(59,127,221,0.4);display:flex;align-items:center;justify-content:center;cursor:pointer;margin-bottom:16px">
-            <div style="width:0;height:0;border-top:12px solid transparent;border-bottom:12px solid transparent;border-left:20px solid #3B7FDD;margin-left:4px"></div>
-          </div>
-          <div style="position:absolute;bottom:0;left:0;right:0;padding:20px 16px;background:linear-gradient(transparent,rgba(0,0,0,0.85))">
-            <div style="display:flex;gap:4px;margin-bottom:6px"><span style="color:#F59E0B;font-size:12px">★★★★★</span></div>
-            <div style="font-size:13px;font-weight:600;color:#fff;margin-bottom:2px">Sophie M.</div>
-            <div style="font-size:11px;color:rgba(255,255,255,0.5)">Biohacker · Bordeaux</div>
-            <p style="font-size:12px;color:rgba(255,255,255,0.75);line-height:1.5;margin-top:8px">"Professionnel du début à la fin. Paiement simple, qualité irréprochable."</p>
-          </div>
-        </div>
+      <!-- TikTok Card 3 -->
+      <div style="flex:0 0 325px;border-radius:20px;overflow:hidden;background:#000;position:relative;min-height:580px;display:flex;align-items:flex-start;justify-content:center">
+        <blockquote class="tiktok-embed" cite="https://vm.tiktok.com/ZN82QeJ7B/" data-video-id="" style="max-width:325px;min-width:325px;border:none;margin:0;padding:0">
+          <section style="background:#111;border-radius:20px;display:flex;align-items:center;justify-content:center;min-height:580px">
+            <a href="https://vm.tiktok.com/ZN82QeJ7B/" target="_blank" style="color:#fff;text-decoration:none;font-size:13px;text-align:center;padding:20px">
+              Voir sur TikTok
+            </a>
+          </section>
+        </blockquote>
       </div>
-
-      <!-- UGC Card 4 -->
-      <div style="flex:0 0 300px;border-radius:20px;overflow:hidden;background:var(--k);position:relative;aspect-ratio:9/16;max-height:520px">
-        <div style="width:100%;height:100%;background:linear-gradient(160deg,#1f1a14,#2a2010);display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative">
-          <div style="width:64px;height:64px;border-radius:50%;background:rgba(201,168,76,0.2);backdrop-filter:blur(8px);border:2px solid rgba(201,168,76,0.4);display:flex;align-items:center;justify-content:center;cursor:pointer;margin-bottom:16px">
-            <div style="width:0;height:0;border-top:12px solid transparent;border-bottom:12px solid transparent;border-left:20px solid #C9A84C;margin-left:4px"></div>
-          </div>
-          <div style="position:absolute;bottom:0;left:0;right:0;padding:20px 16px;background:linear-gradient(transparent,rgba(0,0,0,0.85))">
-            <div style="display:flex;gap:4px;margin-bottom:6px"><span style="color:#F59E0B;font-size:12px">★★★★★</span></div>
-            <div style="font-size:13px;font-weight:600;color:#fff;margin-bottom:2px">Antoine D.</div>
-            <div style="font-size:11px;color:rgba(255,255,255,0.5)">Coach sportif · Marseille</div>
-            <p style="font-size:12px;color:rgba(255,255,255,0.75);line-height:1.5;margin-top:8px">"Service Telegram ultra réactif. Réponse en 20 min à chaque fois. Très pro."</p>
-          </div>
-        </div>
+      <!-- TikTok Card 4 -->
+      <div style="flex:0 0 325px;border-radius:20px;overflow:hidden;background:#000;position:relative;min-height:580px;display:flex;align-items:flex-start;justify-content:center">
+        <blockquote class="tiktok-embed" cite="https://vm.tiktok.com/ZN82xcoGs/" data-video-id="" style="max-width:325px;min-width:325px;border:none;margin:0;padding:0">
+          <section style="background:#111;border-radius:20px;display:flex;align-items:center;justify-content:center;min-height:580px">
+            <a href="https://vm.tiktok.com/ZN82xcoGs/" target="_blank" style="color:#fff;text-decoration:none;font-size:13px;text-align:center;padding:20px">
+              Voir sur TikTok
+            </a>
+          </section>
+        </blockquote>
       </div>
-
-      <!-- UGC Card 5 -->
-      <div style="flex:0 0 300px;border-radius:20px;overflow:hidden;background:var(--k);position:relative;aspect-ratio:9/16;max-height:520px">
-        <div style="width:100%;height:100%;background:linear-gradient(160deg,#101a10,#0a1a0a);display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative">
-          <div style="width:64px;height:64px;border-radius:50%;background:rgba(11,191,160,0.15);backdrop-filter:blur(8px);border:2px solid rgba(11,191,160,0.3);display:flex;align-items:center;justify-content:center;cursor:pointer;margin-bottom:16px">
-            <div style="width:0;height:0;border-top:12px solid transparent;border-bottom:12px solid transparent;border-left:20px solid #0BBFA0;margin-left:4px"></div>
-          </div>
-          <div style="position:absolute;bottom:0;left:0;right:0;padding:20px 16px;background:linear-gradient(transparent,rgba(0,0,0,0.85))">
-            <div style="display:flex;gap:4px;margin-bottom:6px"><span style="color:#F59E0B;font-size:12px">★★★★★</span></div>
-            <div style="font-size:13px;font-weight:600;color:#fff;margin-bottom:2px">Claire B.</div>
-            <div style="font-size:11px;color:rgba(255,255,255,0.5)">Médecin · Strasbourg</div>
-            <p style="font-size:12px;color:rgba(255,255,255,0.75);line-height:1.5;margin-top:8px">"COA parfait, composition exactement comme annoncé. Je recommande à mes confrères."</p>
-          </div>
-        </div>
+      <!-- TikTok Card 5 -->
+      <div style="flex:0 0 325px;border-radius:20px;overflow:hidden;background:#000;position:relative;min-height:580px;display:flex;align-items:flex-start;justify-content:center">
+        <blockquote class="tiktok-embed" cite="https://vm.tiktok.com/ZN82QY88H/" data-video-id="" style="max-width:325px;min-width:325px;border:none;margin:0;padding:0">
+          <section style="background:#111;border-radius:20px;display:flex;align-items:center;justify-content:center;min-height:580px">
+            <a href="https://vm.tiktok.com/ZN82QY88H/" target="_blank" style="color:#fff;text-decoration:none;font-size:13px;text-align:center;padding:20px">
+              Voir sur TikTok
+            </a>
+          </section>
+        </blockquote>
       </div>
-
+      <!-- TikTok Card 6 -->
+      <div style="flex:0 0 325px;border-radius:20px;overflow:hidden;background:#000;position:relative;min-height:580px;display:flex;align-items:flex-start;justify-content:center">
+        <blockquote class="tiktok-embed" cite="https://vm.tiktok.com/ZN82QaDXW/" data-video-id="" style="max-width:325px;min-width:325px;border:none;margin:0;padding:0">
+          <section style="background:#111;border-radius:20px;display:flex;align-items:center;justify-content:center;min-height:580px">
+            <a href="https://vm.tiktok.com/ZN82QaDXW/" target="_blank" style="color:#fff;text-decoration:none;font-size:13px;text-align:center;padding:20px">
+              Voir sur TikTok
+            </a>
+          </section>
+        </blockquote>
+      </div>
     </div>
     <!-- Scroll indicator dots -->
     <div style="display:flex;justify-content:center;gap:6px;margin-top:24px">
@@ -1680,6 +1642,8 @@ function switchPhoto(idx) {
 }
 
 </script>
+
+<script async src="https://www.tiktok.com/embed.js"></script>
 </body>
 </html
 
