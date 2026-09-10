@@ -330,7 +330,7 @@ nav{position:fixed;left:0;right:0;z-index:200;height:52px;display:flex;align-ite
 
   /* ── Hero : coller sous la nav sans espace ── */
   .hero{padding-top:0!important;min-height:auto!important}
-  .hero-left{padding:85px 16px 0!important;display:flex;flex-direction:column!important}
+  .hero-left{padding:68px 16px 0!important;display:flex;flex-direction:column!important}
   .hero-right{display:none!important}
   .hero-badges{display:none!important}
   
@@ -436,6 +436,19 @@ div[style*="netlify"],
 #navHamburger{display:none}
 @media(max-width:860px){#navHamburger{display:flex!important}}
 #mobileMenu.open{display:flex!important}
+
+@media(max-width:480px){
+  #dbar{display:none!important}
+  #mainNav{top:0!important}
+  #trustBar{display:none!important}
+}
+
+/* Netlify badge - cibler tous les cas possibles */
+[data-netlify-badge],
+a[href="https://www.netlify.com"]:not([class]),
+div > a[href*="netlify.com"][style*="position:fixed"],
+#netlify-badge { display:none!important }
+
 </style>
 </head>
 <body>
