@@ -1,0 +1,91 @@
+name: Publish Daily Article
+on:
+  schedule:
+    - cron: '0 7 * * *'
+  workflow_dispatch:
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Publish today article
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 << 'PYEOF'
+          import json, base64, urllib.request, os
+          from datetime import date, timedelta
+
+          today = date.today().strftime("%Y-%m-%d")
+          token = os.environ["GH_TOKEN"]
+          repo = "mpbiolab/reta-site"
+          headers = {
+              "Authorization": f"token {token}",
+              "Accept": "application/vnd.github.v3+json",
+              "Content-Type": "application/json"
+          }
+
+          def api_get(path):
+              req = urllib.request.Request(
+                  f"https://api.github.com/repos/{repo}/contents/{path}", headers=headers)
+              with urllib.request.urlopen(req, timeout=30) as r:
+                  return json.loads(r.read())
+
+          def api_put(path, content_b64, message, sha=None):
+              payload = {"message": message, "content": content_b64}
+              if sha: payload["sha"] = sha
+              req = urllib.request.Request(
+                  f"https://api.github.com/repos/{repo}/contents/{path}",
+                  data=json.dumps(payload).encode(), headers=headers, method="PUT")
+              with urllib.request.urlopen(req, timeout=60) as r:
+                  return json.loads(r.read())
+
+          # Lire le planning
+          pd = api_get("planning.json")
+          planning = json.loads(base64.b64decode(pd["content"]).decode())
+          plan_sha = pd["sha"]
+
+          # Trouver l article du jour
+          article = next((a for a in planning if not a["published"]), None)
+          if not article:
+              print("Tous les articles sont publies!")
+              exit(0)
+
+          print(f"Publication: {article['slug']} ({today})")
+
+          # Lire depuis queue
+          qd = api_get(f"articles_queue/{article['file']}")
+
+          # Verifier si existe deja dans blog
+          blog_sha = None
+          try:
+              bd = api_get(f"blog/{article['file']}")
+              blog_sha = bd.get("sha")
+          except: pass
+
+          # Publier
+          api_put(f"blog/{article['file']}", qd["content"],
+                  f"Auto-publish: {article['slug']} ({today})", blog_sha)
+          print(f"Publie: {article['url']}")
+
+          # Marquer comme publie
+          article["published"] = True
+          article["date"] = today
+          new_plan = json.dumps(planning, indent=2, ensure_ascii=False).encode()
+          api_put("planning.json", base64.b64encode(new_plan).decode(),
+                  f"Mark published: {article['slug']}", plan_sha)
+          print("Planning mis a jour")
+          PYEOF
+
+      - name: Notify Telegram
+        run: |
+          curl -s "https://api.telegram.org/bot8935642736:AAEshFfBqT7dOTq1TFV7JhPn5ATiqUQtFAM/sendMessage?chat_id=1465507713&text=✅+Article+SEO+publie+sur+reta.com"
