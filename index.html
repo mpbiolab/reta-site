@@ -320,70 +320,79 @@ nav{position:fixed;left:0;right:0;z-index:200;height:52px;display:flex;align-ite
    RESPONSIVE — MOBILE (≤480px)
 ══════════════════════════════════════════ */
 @media(max-width:480px){
-  /* ── Typographie ── */
-  .h1{font-size:clamp(28px,8vw,40px)!important;line-height:1.1!important}
-  .h2{font-size:clamp(20px,6vw,30px)!important}
+  /* ── Typo ── */
+  .h1{font-size:clamp(30px,8vw,42px)!important;line-height:1.15!important}
+  .h2{font-size:clamp(22px,6vw,32px)!important}
 
   /* ── Nav ── */
-  nav{padding:0 16px!important}
+  nav{padding:0 20px!important}
   .nlogo span{display:none}
 
-  /* ── Hero : coller sous la nav sans espace ── */
+  /* ── Hero ── */
   .hero{padding-top:0!important;min-height:auto!important}
-  .hero-left{padding:68px 16px 0!important;display:flex;flex-direction:column!important}
+  .hero-left{padding:80px 20px 24px!important;display:flex;flex-direction:column!important}
   .hero-right{display:none!important}
   .hero-badges{display:none!important}
-  
-  /* ── Eyebrow serré ── */
-  .eyebrow{font-size:9px!important;letter-spacing:.07em!important;margin-bottom:4px!important}
 
-  /* ── H1 serré ── */
-  .h1{margin-bottom:4px!important}
+  /* ── Eyebrow ── */
+  .eyebrow{font-size:10px!important;letter-spacing:.06em!important;margin-bottom:10px!important}
 
-  /* ── Image mobile : juste sous le titre, pas d'espace ── */
-  .hero-banner-mobile{display:block!important;margin:8px 0 10px!important;border-radius:14px!important;max-height:200px!important;object-fit:cover!important;object-position:center!important}
+  /* ── H1 ── */
+  .h1{margin-bottom:6px!important}
 
-  /* ── Lead text compact ── */
-  .lead{font-size:13px!important;line-height:1.5!important;margin-top:0!important;margin-bottom:14px!important;max-width:100%!important}
+  /* ── Image mobile ── */
+  .hero-banner-mobile{
+    display:block!important;
+    margin:16px 0 14px!important;
+    border-radius:16px!important;
+    max-height:220px!important;
+    object-fit:cover!important;
+    object-position:center!important;
+    width:100%!important
+  }
+
+  /* ── Lead ── */
+  .lead{font-size:14px!important;line-height:1.6!important;margin-bottom:20px!important}
 
   /* ── Boutons ── */
-  .hero-actions{flex-direction:column!important;gap:8px!important;margin-top:0!important}
+  .hero-actions{flex-direction:column!important;gap:10px!important;margin-top:0!important}
   .hero-actions .btn-primary,.hero-actions .btn-text{width:100%!important;text-align:center!important}
 
   /* ── Stats ── */
-  .hero-stats{grid-template-columns:1fr 1fr!important;gap:8px!important;margin-top:14px!important}
+  .hero-stats{grid-template-columns:1fr 1fr!important;gap:12px!important;margin-top:20px!important}
 
   /* ── Sections ── */
-  .container{padding-left:16px!important;padding-right:16px!important}
-  section,.section{padding-left:16px!important;padding-right:16px!important}
+  .container{padding-left:20px!important;padding-right:20px!important}
+  section,.section{padding-left:20px!important;padding-right:20px!important}
   .sband{grid-template-columns:1fr!important}
   .sband-cell{border-right:none!important;border-bottom:1px solid var(--border)!important}
   .step-grid{grid-template-columns:1fr!important}
   .step-cell{border-right:none!important;border-bottom:1px solid var(--border)!important}
-  .sci-inner{padding:0 16px!important}
-  .cta-dark{padding:48px 16px!important}
-  .prod-desc-wrap{padding:32px 16px!important}
+  .sci-inner{padding:0 20px!important}
+  .cta-dark{padding:56px 20px!important}
+  .prod-desc-wrap{padding:40px 20px!important}
 
   /* ── Page produit ── */
   .ph-cta{width:100%!important;padding:16px!important}
   .ph-tabs{overflow-x:auto!important;white-space:nowrap!important}
+  .ph-side{display:none!important}
 
   /* ── Blog / Guide ── */
-  .blog-hero{padding:100px 16px 32px!important}
-  .article-view{padding:90px 16px 40px!important}
-  .guide-hero{padding:90px 16px 32px!important}
+  .blog-hero{padding:100px 20px 40px!important}
+  .article-view{padding:90px 20px 48px!important}
+  .guide-hero{padding:90px 20px 40px!important}
   .guide-nav{overflow-x:auto!important;flex-wrap:nowrap!important;white-space:nowrap!important}
-  .guide-content{padding:32px 16px!important}
+  .guide-content{padding:40px 20px!important}
   .faq-list{padding:0!important}
 
   /* ── UGC ── */
-  #ugcStrip{padding:0 16px!important}
+  #ugcStrip{padding:0 20px!important}
   #ugcStrip > div{flex:0 0 min(280px,80vw)!important}
-  #artStrip .article-card{flex:0 0 min(280px,85vw)!important;min-width:0!important}
+  #artStrip .article-card{flex:0 0 min(290px,85vw)!important;min-width:0!important}
 
   /* ── Footer ── */
-  .footer{padding:32px 16px!important}
-  .footer-links{flex-wrap:wrap!important;gap:12px!important;justify-content:center!important}
+  .footer{padding:40px 20px!important}
+  .footer-links{flex-wrap:wrap!important;gap:14px!important;justify-content:center!important}
 
   /* ── Checkout ── */
   .co-modal{max-height:96vh!important}
