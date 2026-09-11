@@ -1364,70 +1364,119 @@ div > a[href*="netlify.com"][style*="position:fixed"],
       <button class="ghost-btn" onclick="goStep(1)">← Retour</button>
     </div>
     <div class="co-bd" id="s3" style="display:none">
-      <div class="dbox">💱 Prix en <strong>EUR</strong> · Paiement en <strong>USDT ou USDC</strong>. Conversion au taux du jour (1€ ≈ 1.08 USDT).</div>
-      <div class="amt-box"><div class="amt-val" id="usdAmt">—</div><div class="amt-lbl">USDT / USDC à envoyer</div></div>
-      <label class="lbl" style="margin-top:18px">Choisissez votre réseau</label>
-      <div class="addr-opt sel" id="optSol" onclick="selAddr('SOL')"><input type="radio" name="addr" checked><div style="flex:1"><div class="aname">USDT / USDC <span class="atag atag-sol">Solana</span><span class="atag atag-rec">⭐ Recommandé</span></div><div class="amono" style="word-break:break-all;font-size:11px">6aisCfknHoWgoUmNwdRuvmK54g8PHbE7xDLBbhinGW9s</div><button class="copy-btn" onclick="event.stopPropagation();doCopy('6aisCfknHoWgoUmNwdRuvmK54g8PHbE7xDLBbhinGW9s')">Copier l'adresse</button></div></div>
-      <div class="addr-opt" id="optEth" onclick="selAddr('ETH')"><input type="radio" name="addr"><div style="flex:1"><div class="aname">USDT / USDC <span class="atag atag-eth">Ethereum ERC-20</span></div><div class="amono" style="word-break:break-all;font-size:11px">0x60Ddb0B10eFCff677bDc964cbef909Fd5f6561Eb</div><button class="copy-btn" style="color:#3b7fdd" onclick="event.stopPropagation();doCopy('0x60Ddb0B10eFCff677bDc964cbef909Fd5f6561Eb')">Copier l'adresse</button></div></div>
-      
-      <!-- Bank transfer option -->
-      <div class="addr-card" id="cardBank" onclick="selectAddr('BANK')" style="margin-top:10px">
-        <input type="radio" name="addr">
-        <div class="addr-card-body">
-          <div class="addr-card-head">
-            <span class="addr-card-name">Virement bancaire</span>
-            <span class="addr-tag" style="background:rgba(11,191,160,0.1);color:var(--teal)">Sur demande</span>
-          </div>
-          <div style="font-size:12px;color:var(--grey);line-height:1.5;margin-top:4px">
-            Coordonnées bancaires communiquées par Telegram après confirmation de commande. Délai de traitement : 24–48h supplémentaires.
-          </div>
-        </div>
+
+      <!-- Montant -->
+      <div style="background:linear-gradient(135deg,#1d6e3f,#2db567);border-radius:14px;padding:20px 24px;margin-bottom:20px;text-align:center">
+        <div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:6px">Montant à envoyer</div>
+        <div style="font-size:36px;font-weight:700;color:#fff;letter-spacing:-.02em" id="usdAmt">—</div>
+        <div style="font-size:12px;color:rgba(255,255,255,.6);margin-top:4px">USDT ou USDC · 1€ ≈ 1.08 USDT</div>
       </div>
-      
-      <!-- Virement bancaire -->
-      <div class="addr-card" id="cardBank" onclick="selectAddr('BANK')" style="margin-top:8px">
-        <input type="radio" name="addr" id="radioBank">
-        <div class="addr-card-body">
-          <div class="addr-card-head">
-            <span class="addr-card-name">🏦 Virement bancaire</span>
-            <span class="addr-tag" style="background:rgba(11,191,160,0.1);color:#0BBFA0">Sur demande</span>
+
+      <!-- Sécurité -->
+      <div style="display:flex;gap:8px;margin-bottom:18px;flex-wrap:wrap">
+        <span style="display:inline-flex;align-items:center;gap:5px;background:#f0faf4;border:1px solid rgba(29,110,63,.15);border-radius:980px;padding:5px 12px;font-size:11px;font-weight:600;color:#1d6e3f">🔒 Paiement sécurisé</span>
+        <span style="display:inline-flex;align-items:center;gap:5px;background:#f0faf4;border:1px solid rgba(29,110,63,.15);border-radius:980px;padding:5px 12px;font-size:11px;font-weight:600;color:#1d6e3f">✓ Adresses vérifiées</span>
+        <span style="display:inline-flex;align-items:center;gap:5px;background:#f0faf4;border:1px solid rgba(29,110,63,.15);border-radius:980px;padding:5px 12px;font-size:11px;font-weight:600;color:#1d6e3f">📦 Expédition 24h</span>
+      </div>
+
+      <!-- Sélecteur réseau -->
+      <div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--grey);margin-bottom:10px">Choisissez votre réseau</div>
+
+      <!-- SOL USDC -->
+      <div class="addr-opt sel" id="optSol" onclick="selAddr('SOL')" style="margin-bottom:10px">
+        <input type="radio" name="addr" checked>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+            <span style="font-weight:700;font-size:14px">USDC</span>
+            <span style="background:#9945FF;color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:980px">Solana</span>
+            <span style="background:#1d6e3f;color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:980px">⭐ Recommandé · Frais ~0.01€</span>
           </div>
-          <div style="font-size:12px;color:var(--grey);line-height:1.6;margin-top:6px">
-            Contactez un agent sur Telegram pour recevoir les coordonnées bancaires.<br>
-            <a href="https://t.me/reta_support" target="_blank" style="color:var(--g);font-weight:600;text-decoration:none">→ @reta_support sur Telegram</a>
-          </div>
-          <div id="bankInfo" style="display:none;margin-top:10px;background:var(--lgrey);border-radius:8px;padding:10px;font-size:12px;line-height:1.7">
-            ⏳ Un agent Telegram vous communiquera les coordonnées sous quelques minutes.<br>
-            Délai de validation : 24–48h supplémentaires après réception.
+          <div style="display:flex;align-items:center;gap:8px;background:rgba(0,0,0,.04);border-radius:8px;padding:10px 12px">
+            <div style="font-size:10px;font-family:monospace;color:#333;word-break:break-all;flex:1">HXp8sLCsKwTPZJpc559SeQzm2Sph7uPbbVZD4fnJ5R7k</div>
+            <button onclick="event.stopPropagation();doCopy('HXp8sLCsKwTPZJpc559SeQzm2Sph7uPbbVZD4fnJ5R7k',this)" style="background:#1d6e3f;color:#fff;border:none;border-radius:6px;padding:6px 12px;font-size:11px;font-weight:600;cursor:pointer;white-space:nowrap;flex-shrink:0">Copier</button>
           </div>
         </div>
       </div>
 
-      <!-- Guide crypto 3 étapes -->
-      <details style="margin-top:14px;margin-bottom:4px">
-        <summary style="font-size:13px;font-weight:600;cursor:pointer;color:var(--g);padding:10px 14px;background:var(--gdim);border-radius:8px;list-style:none;display:flex;align-items:center;gap:8px">
-          <span>🪙</span> Première fois ? Guide paiement crypto en 3 étapes
-        </summary>
-        <div style="background:var(--lgrey);border-radius:0 0 10px 10px;padding:16px;font-size:13px;line-height:1.8">
-          <div style="display:flex;gap:12px;margin-bottom:12px;align-items:flex-start">
-            <div style="min-width:26px;height:26px;border-radius:50%;background:var(--g);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700">1</div>
-            <div><strong>Créez un compte Binance ou Coinbase</strong><br><span style="color:var(--grey)">Gratuit, 5 min. Vérification d'identité requise.</span><br><a href="https://www.binance.com/fr" target="_blank" style="color:var(--g);font-size:12px">→ binance.com</a> &nbsp; <a href="https://www.coinbase.com/fr" target="_blank" style="color:var(--g);font-size:12px">→ coinbase.com</a></div>
+      <!-- ETH USDT -->
+      <div class="addr-opt" id="optEth" onclick="selAddr('ETH')" style="margin-bottom:10px">
+        <input type="radio" name="addr">
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+            <span style="font-weight:700;font-size:14px">USDT / USDC</span>
+            <span style="background:#627EEA;color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:980px">Ethereum ERC-20</span>
           </div>
-          <div style="display:flex;gap:12px;margin-bottom:12px;align-items:flex-start">
-            <div style="min-width:26px;height:26px;border-radius:50%;background:var(--g);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700">2</div>
-            <div><strong>Achetez des USDT ou USDC</strong><br><span style="color:var(--grey)">Carte bancaire acceptée. Choisissez le réseau <strong>Solana</strong> (frais ~0.01€).</span></div>
-          </div>
-          <div style="display:flex;gap:12px;align-items:flex-start">
-            <div style="min-width:26px;height:26px;border-radius:50%;background:var(--g);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700">3</div>
-            <div><strong>Envoyez exactement le montant affiché</strong><br><span style="color:var(--grey)">Copiez l'adresse, collez-la dans "Retrait" sur l'exchange. Double-vérifiez le réseau.</span></div>
-          </div>
-          <div style="margin-top:12px;padding:10px 12px;background:rgba(220,60,20,.05);border-radius:8px;font-size:12px;color:rgba(0,0,0,.5)">
-            ❓ Besoin d'aide ? <a href="https://t.me/reta_support" target="_blank" style="color:var(--g);font-weight:600">Un agent Telegram vous guide en temps réel</a>
+          <div style="display:flex;align-items:center;gap:8px;background:rgba(0,0,0,.04);border-radius:8px;padding:10px 12px">
+            <div style="font-size:10px;font-family:monospace;color:#333;word-break:break-all;flex:1">0xe2a9a665f8788f005021cd4ad5643631f7489020</div>
+            <button onclick="event.stopPropagation();doCopy('0xe2a9a665f8788f005021cd4ad5643631f7489020',this)" style="background:#627EEA;color:#fff;border:none;border-radius:6px;padding:6px 12px;font-size:11px;font-weight:600;cursor:pointer;white-space:nowrap;flex-shrink:0">Copier</button>
           </div>
         </div>
+      </div>
+
+      <!-- TRX USDT -->
+      <div class="addr-opt" id="optTrx" onclick="selAddr('TRX')" style="margin-bottom:10px">
+        <input type="radio" name="addr">
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+            <span style="font-weight:700;font-size:14px">USDT</span>
+            <span style="background:#EF0027;color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:980px">Tron TRC-20</span>
+            <span style="background:rgba(0,0,0,.06);color:#666;font-size:10px;font-weight:600;padding:2px 8px;border-radius:980px">Frais ~1€</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;background:rgba(0,0,0,.04);border-radius:8px;padding:10px 12px">
+            <div style="font-size:10px;font-family:monospace;color:#333;word-break:break-all;flex:1">TPSyy4PUMM5KPoZinRUCLxB82zGc6NE8pm</div>
+            <button onclick="event.stopPropagation();doCopy('TPSyy4PUMM5KPoZinRUCLxB82zGc6NE8pm',this)" style="background:#EF0027;color:#fff;border:none;border-radius:6px;padding:6px 12px;font-size:11px;font-weight:600;cursor:pointer;white-space:nowrap;flex-shrink:0">Copier</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Virement bancaire -->
+      <div class="addr-opt" id="optBank" onclick="selAddr('BANK')" style="margin-bottom:10px">
+        <input type="radio" name="addr">
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+            <span style="font-weight:700;font-size:14px">🏦 Virement bancaire</span>
+            <span style="background:rgba(11,191,160,.1);color:#0BBFA0;font-size:10px;font-weight:700;padding:2px 8px;border-radius:980px">Sur demande</span>
+          </div>
+          <div style="font-size:12px;color:var(--grey);line-height:1.6">
+            Un agent vous communique les coordonnées bancaires sous 15 min via Telegram.<br>
+            <a href="https://t.me/reta_support" target="_blank" style="color:var(--g);font-weight:600">→ @reta_support</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Étapes de paiement -->
+      <div style="background:var(--lgrey);border-radius:12px;padding:16px;margin:16px 0">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--grey);margin-bottom:12px">Comment payer</div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="display:flex;gap:10px;align-items:flex-start;font-size:13px">
+            <div style="width:22px;height:22px;border-radius:50%;background:var(--g);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0">1</div>
+            <div><strong>Copiez l'adresse</strong> du réseau que vous utilisez</div>
+          </div>
+          <div style="display:flex;gap:10px;align-items:flex-start;font-size:13px">
+            <div style="width:22px;height:22px;border-radius:50%;background:var(--g);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0">2</div>
+            <div><strong>Envoyez exactement</strong> <span id="stepAmt" style="color:var(--g);font-weight:700">— USDT/USDC</span> depuis votre wallet ou exchange</div>
+          </div>
+          <div style="display:flex;gap:10px;align-items:flex-start;font-size:13px">
+            <div style="width:22px;height:22px;border-radius:50%;background:var(--g);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0">3</div>
+            <div>Cliquez <strong>"J'ai payé"</strong> — notre équipe confirme sous 30 min</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Guide première fois -->
+      <details style="margin-bottom:14px">
+        <summary style="font-size:13px;font-weight:600;cursor:pointer;color:var(--g);padding:10px 14px;background:var(--gdim);border-radius:8px;display:flex;align-items:center;gap:8px;list-style:none">
+          🪙 Première fois avec la crypto ? Guide rapide
+        </summary>
+        <div style="background:var(--lgrey);border-radius:0 0 8px 8px;padding:14px;font-size:13px;line-height:1.7">
+          <strong>Binance ou Coinbase</strong> → Acheter USDC → Retirer vers l'adresse copiée<br>
+          <a href="https://t.me/reta_support" target="_blank" style="color:var(--g);font-weight:600">Un agent vous guide gratuitement sur Telegram →</a>
+        </div>
       </details>
-      <div class="warn-box" style="margin-top:10px">⚠️ Envoyez <strong>exactement</strong> le montant sur le <strong>bon réseau</strong>. Erreur de réseau = perte définitive des fonds.</div>
-      <button class="co-btn" onclick="doConfirm()">J'ai effectué le paiement ✓</button>
+
+      <div class="warn-box">⚠️ Vérifiez le réseau avant d'envoyer. Erreur de réseau = perte des fonds.</div>
+
+      <button class="co-btn" onclick="doConfirm()" style="margin-top:16px">✓ J'ai effectué le paiement</button>
       <button class="ghost-btn" onclick="goStep(2)">← Retour</button>
     </div>
     <div class="co-bd" id="s4" style="display:none">
@@ -1543,7 +1592,11 @@ function onDosage(){const v=parseInt(document.getElementById('coDosage').value);
 function goPayment(){
   if(!document.getElementById('agr').checked){showToast('Acceptez la déclaration');return}
   if(!document.getElementById('em').value){showToast('Email requis');return}
-  document.getElementById('usdAmt').textContent=(price*1.08).toFixed(2)+' USDT';
+  const usdtAmt=(price*1.08).toFixed(2);
+  const el_usd=document.getElementById('usdAmt');
+  if(el_usd)el_usd.textContent=usdtAmt+' USDT';
+  const el_step=document.getElementById('stepAmt');
+  if(el_step)el_step.textContent=usdtAmt+' USDT/USDC';
   goStep(3);
 }
 function selAddr(n){document.getElementById('optSol').classList.toggle('sel',n==='SOL');document.getElementById('optEth').classList.toggle('sel',n==='ETH');document.querySelectorAll('.addr-opt input').forEach((r,i)=>r.checked=(n==='SOL'?i===0:i===1));}
@@ -1552,9 +1605,10 @@ async function doConfirm(){
   // Générer un N° de commande unique
   const orderId='RETA-'+Date.now().toString(36).toUpperCase().slice(-6)+'-'+Math.random().toString(36).toUpperCase().slice(2,5);
   // Déterminer le mode de paiement
-  let net='Solana';
-  if(document.getElementById('optEth')&&document.getElementById('optEth').classList.contains('sel'))net='Ethereum ERC-20';
-  if(document.getElementById('cardBank')&&document.getElementById('cardBank').classList.contains('sel'))net='Virement bancaire';
+  let net='Solana USDC';
+  if(document.getElementById('optEth')?.classList.contains('sel'))net='Ethereum ERC-20';
+  if(document.getElementById('optTrx')?.classList.contains('sel'))net='Tron TRC-20';
+  if(document.getElementById('optBank')?.classList.contains('sel'))net='Virement bancaire';
   const usd=(price*1.08).toFixed(2);
   const name=document.getElementById('fn').value+' '+document.getElementById('ln').value;
   const em=document.getElementById('em').value;
