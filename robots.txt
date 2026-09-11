@@ -4,6 +4,5 @@ Allow: /
 # Sitemaps
 Sitemap: https://xn--rta-bma.com/sitemap.xml
 
-# Disallow admin or private paths (none for now)
-Disallow: /admin/
-Disallow: /private/
+# IndexNow key
+# Key: reta2026seo
