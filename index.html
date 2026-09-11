@@ -320,48 +320,130 @@ nav{position:fixed;left:0;right:0;z-index:200;height:52px;display:flex;align-ite
    RESPONSIVE — MOBILE (≤480px)
 ══════════════════════════════════════════ */
 @media(max-width:480px){
-  /* ── Typo ── */
-  .h1{font-size:clamp(30px,8vw,42px)!important;line-height:1.15!important}
-  .h2{font-size:clamp(22px,6vw,32px)!important}
+  /* ═══ HERO MOBILE — style Appia Bio ═══ */
 
-  /* ── Nav ── */
-  nav{padding:0 20px!important}
-  .nlogo span{display:none}
-
-  /* ── Hero ── */
-  .hero{padding-top:0!important;min-height:auto!important}
-  .hero-left{padding:80px 20px 24px!important;display:flex;flex-direction:column!important}
-  .hero-right{display:none!important}
-  .hero-badges{display:none!important}
-
-  /* ── Eyebrow ── */
-  .eyebrow{font-size:10px!important;letter-spacing:.06em!important;margin-bottom:10px!important}
-
-  /* ── H1 ── */
-  .h1{margin-bottom:6px!important}
-
-  /* ── Image mobile ── */
-  .hero-banner-mobile{
-    display:block!important;
-    margin:16px 0 14px!important;
-    border-radius:16px!important;
-    max-height:220px!important;
-    object-fit:cover!important;
-    object-position:center!important;
-    width:100%!important
+  /* Hero plein écran fond sombre */
+  .hero{
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    justify-content:center!important;
+    min-height:100svh!important;
+    padding:0!important;
+    background:linear-gradient(160deg,#0a0f1a 0%,#0d1f12 60%,#071a0a 100%)!important;
+    position:relative!important;
+    overflow:hidden!important;
+    text-align:center!important
   }
 
-  /* ── Lead ── */
-  .lead{font-size:14px!important;line-height:1.6!important;margin-bottom:20px!important}
+  /* Particules décoratives background */
+  .hero::before{
+    content:'';
+    position:absolute;
+    width:300px;height:300px;
+    border-radius:50%;
+    background:radial-gradient(circle,rgba(29,110,63,.25) 0%,transparent 70%);
+    top:-80px;right:-80px;
+    pointer-events:none
+  }
+  .hero::after{
+    content:'';
+    position:absolute;
+    width:200px;height:200px;
+    border-radius:50%;
+    background:radial-gradient(circle,rgba(29,110,63,.15) 0%,transparent 70%);
+    bottom:60px;left:-60px;
+    pointer-events:none
+  }
 
-  /* ── Boutons ── */
-  .hero-actions{flex-direction:column!important;gap:10px!important;margin-top:0!important}
-  .hero-actions .btn-primary,.hero-actions .btn-text{width:100%!important;text-align:center!important}
+  /* Cacher hero-right et badges */
+  .hero-right{display:none!important}
+  .hero-badges{display:none!important}
+  .hero-banner-mobile{display:none!important}
 
-  /* ── Stats ── */
-  .hero-stats{grid-template-columns:1fr 1fr!important;gap:12px!important;margin-top:20px!important}
+  /* Hero-left : centré plein écran */
+  .hero-left{
+    padding:100px 28px 40px!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    justify-content:center!important;
+    width:100%!important;
+    z-index:1!important;
+    position:relative!important
+  }
 
-  /* ── Sections ── */
+  /* Eyebrow */
+  .eyebrow{
+    font-size:10px!important;
+    letter-spacing:.1em!important;
+    color:rgba(29,110,63,.9)!important;
+    margin-bottom:20px!important;
+    text-align:center!important
+  }
+
+  /* H1 — grand, blanc, centré */
+  .h1{
+    font-size:clamp(36px,9vw,48px)!important;
+    line-height:1.1!important;
+    color:#ffffff!important;
+    text-align:center!important;
+    margin-bottom:0!important;
+    font-weight:700!important
+  }
+
+  /* Sous-titre vert (Perdre du poids. Pour de vrai.) */
+  .h1 span,.hero .h1 + .h1,
+  [style*="color:var(--gl)"].h1,
+  [style*="color:var(--g)"].h1{
+    color:rgba(29,200,90,.95)!important;
+    display:block!important
+  }
+
+  /* Lead text */
+  .lead{
+    font-size:14px!important;
+    line-height:1.65!important;
+    color:rgba(255,255,255,.65)!important;
+    margin:20px 0 28px!important;
+    text-align:center!important;
+    max-width:320px!important
+  }
+
+  /* Bouton Commander — centré, pleine largeur */
+  .hero-actions{
+    flex-direction:column!important;
+    align-items:center!important;
+    gap:12px!important;
+    width:100%!important;
+    margin-top:0!important
+  }
+  .hero-actions .btn-primary{
+    width:100%!important;
+    max-width:320px!important;
+    text-align:center!important;
+    padding:16px 24px!important;
+    font-size:16px!important;
+    border-radius:980px!important
+  }
+  .hero-actions .btn-text{
+    color:rgba(255,255,255,.5)!important;
+    font-size:13px!important;
+    text-align:center!important
+  }
+
+  /* Stats band sous le hero */
+  .hero-stats{
+    grid-template-columns:1fr 1fr!important;
+    gap:12px!important;
+    margin-top:32px!important;
+    width:100%!important
+  }
+  .stat-val{color:#fff!important}
+  .stat-lbl{color:rgba(255,255,255,.5)!important}
+
+  /* ═══ RESTE DU SITE MOBILE ═══ */
+  .h2{font-size:clamp(22px,6vw,32px)!important}
   .container{padding-left:20px!important;padding-right:20px!important}
   section,.section{padding-left:20px!important;padding-right:20px!important}
   .sband{grid-template-columns:1fr!important}
@@ -371,41 +453,33 @@ nav{position:fixed;left:0;right:0;z-index:200;height:52px;display:flex;align-ite
   .sci-inner{padding:0 20px!important}
   .cta-dark{padding:56px 20px!important}
   .prod-desc-wrap{padding:40px 20px!important}
-
-  /* ── Page produit ── */
   .ph-cta{width:100%!important;padding:16px!important}
   .ph-tabs{overflow-x:auto!important;white-space:nowrap!important}
   .ph-side{display:none!important}
-
-  /* ── Blog / Guide ── */
   .blog-hero{padding:100px 20px 40px!important}
   .article-view{padding:90px 20px 48px!important}
   .guide-hero{padding:90px 20px 40px!important}
   .guide-nav{overflow-x:auto!important;flex-wrap:nowrap!important;white-space:nowrap!important}
   .guide-content{padding:40px 20px!important}
   .faq-list{padding:0!important}
-
-  /* ── UGC ── */
   #ugcStrip{padding:0 20px!important}
   #ugcStrip > div{flex:0 0 min(280px,80vw)!important}
   #artStrip .article-card{flex:0 0 min(290px,85vw)!important;min-width:0!important}
-
-  /* ── Footer ── */
   .footer{padding:40px 20px!important}
   .footer-links{flex-wrap:wrap!important;gap:14px!important;justify-content:center!important}
-
-  /* ── Checkout ── */
   .co-modal{max-height:96vh!important}
   .g2{grid-template-columns:1fr!important}
   .amono{font-size:9px!important;word-break:break-all!important}
-
-  /* ── Chat ── */
   .chat-win{width:calc(100vw - 1rem)!important;right:.5rem!important}
   .chat-btn{bottom:1.5rem!important;right:1rem!important}
-
-  /* ── Lead form ── */
   #emailLeadForm{flex-direction:column!important}
   #emailLeadForm input,#emailLeadForm button{width:100%!important}
+
+  /* Nav sur fond sombre */
+  #mainNav{background:rgba(10,15,26,.95)!important;border-bottom:1px solid rgba(255,255,255,.08)!important;top:0!important}
+  .nlogo{color:#fff!important}
+  .nlogo span{display:none}
+  .hb-line{background:#fff!important}
 }
 /* Articles carousel */
 #artStrip::-webkit-scrollbar{display:none}
