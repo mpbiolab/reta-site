@@ -854,8 +854,8 @@ div > a[href*="netlify.com"][style*="position:fixed"],
     <button class="btn-primary" style="white-space:nowrap" style="font-size:17px;padding:16px 44px;position:relative;z-index:1" onclick="openCo()">Commander</button>
     <p style="font-size:12px;color:rgba(255,255,255,.2);margin-top:16px;position:relative;z-index:1">Retatrutide 10mg · COA inclus · Paiement USDT/USDC</p>
   </div>
-<!-- SECTION CAPTURE EMAIL -->
-<div style="background:linear-gradient(135deg,#0d1f2d,#071428);padding:72px 24px;text-align:center">
+<!-- SECTION CAPTURE EMAIL (masquée : plus d'envoi Telegram) -->
+<div style="display:none;background:linear-gradient(135deg,#0d1f2d,#071428);padding:72px 24px;text-align:center">
   <div style="max-width:min(520px,100%);margin:0 auto">
     <div class="eyebrow" style="color:rgba(11,191,160,.8)">Protocoles &amp; Recherche</div>
     <h2 class="h2" style="color:#fff;margin-bottom:12px">Recevez nos guides gratuits</h2>
@@ -1490,7 +1490,7 @@ div > a[href*="netlify.com"][style*="position:fixed"],
           <div style="display:flex;justify-content:space-between"><span style="color:var(--grey)">Livraison</span><strong id="cr-addr">—</strong></div>
         </div>
         <div class="conf-list">
-          <div class="conf-item"><span class="conf-n">1</span><span id="cr-step1">Vérification du paiement dans les prochaines minutes.</span></div>
+          <div class="conf-item"><span class="conf-n">1</span><span id="cr-step1">Envoyez votre preuve de paiement (hash de transaction) sur Telegram.</span></div>
           <div class="conf-item"><span class="conf-n">2</span><span>Rejoignez <a href="https://t.me/reta_support" target="_blank" style="color:var(--gl);font-weight:600">@reta_support sur Telegram</a> avec votre N° de commande pour le suivi.</span></div>
           <div class="conf-item"><span class="conf-n">3</span><span>Expédition sous 24–48h — numéro de suivi envoyé par Telegram.</span></div>
         </div>
@@ -1535,7 +1535,7 @@ div > a[href*="netlify.com"][style*="position:fixed"],
 <div class="toast" id="toast"></div>
 
 <script>
-const TG='8822616322:AAHPo7yIdTbPLf-A9RR9NQfOsHDQvWf4L6A',CID='1465507713',OAI='REMPLACE_PAR_TA_CLE_OPENAI';
+const OAI='REMPLACE_PAR_TA_CLE_OPENAI';
 let price=114,dose='10 mg',chatOpen=false,chatHist=[];
 
 // NAV
@@ -1615,7 +1615,7 @@ async function doConfirm(){
   const addr=document.getElementById('ad').value+', '+document.getElementById('zp').value+' '+document.getElementById('ci').value;
   // Message Telegram
   const msg=`🛒 *NOUVELLE COMMANDE — Réta*\n\n🔖 N° ${orderId}\n💊 Retatrutide ${dose}\n💰 €${price}${net!=='Virement bancaire'?' (≈ '+usd+' USDT)':''}\n💳 ${net}\n\n👤 ${name}\n📧 ${em}\n📞 ${ph}\n📍 ${addr}\n\n⏰ ${new Date().toLocaleString('fr-FR')}`;
-  try{await fetch(`https://api.telegram.org/bot${TG}/sendMessage`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:CID,text:msg,parse_mode:'Markdown'})})}catch(e){}
+  
   // Remplir la page de confirmation
   document.getElementById('conf-order-num').textContent=orderId;
   document.getElementById('cr-product').textContent='Retatrutide '+dose;
@@ -1633,7 +1633,7 @@ async function submitLead(){
   const em=document.getElementById('leadEmail');
   if(!em||!em.value||!em.value.includes('@')){showToast('Email invalide');return;}
   const msg=`📧 *NOUVEAU LEAD — Réta*\n\nEmail : ${em.value}\n⏰ ${new Date().toLocaleString('fr-FR')}`;
-  try{await fetch(`https://api.telegram.org/bot${TG}/sendMessage`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:CID,text:msg,parse_mode:'Markdown'})})}catch(e){}
+  
   document.getElementById('emailLeadForm').style.display='none';
   document.getElementById('leadSuccess').style.display='block';
 }
