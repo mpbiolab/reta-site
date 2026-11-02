@@ -1,0 +1,310 @@
+<div class="reta" id="reta-top">
+<style>
+{% raw %}
+.reta{
+  --green:#0D4F3C; --green-2:#1a7a5e; --green-soft:rgba(13,79,60,.07);
+  --ink:#080808; --bg:#F7F8F6; --card:#fff; --line:rgba(8,8,8,.1);
+  --mute:#5d625f; --mute-2:#8a8f8c; --warn-bg:#f4f1e8; --warn-line:#d9cfae; --warn-ink:#5b4a12;
+  --r:14px; --max:1160px;
+;font-family:inherit;color:var(--ink);line-height:1.6}
+.reta *,.reta *::before,.reta *::after{box-sizing:border-box;margin:0;padding:0}
+.reta img{max-width:100%;display:block;height:auto}
+.reta a{color:inherit}
+.reta section{padding:clamp(56px,8vw,104px) 0}
+.reta .eyebrow{font-size:11.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--green)}
+.reta h1,.reta h2,.reta h3{letter-spacing:-.02em;line-height:1.12}
+.reta h1{font-size:clamp(34px,5.2vw,60px);font-weight:700}
+.reta h2{font-size:clamp(26px,3.4vw,40px);font-weight:700;margin-top:12px}
+.reta h3{font-size:17px;font-weight:600}
+.reta .lead{font-size:clamp(16px,1.35vw,18px);color:var(--mute);max-width:60ch}
+.reta .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 26px;border-radius:999px;font:600 14.5px/1 'Inter',sans-serif;text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:.18s}
+.reta .btn-primary{background:var(--green);color:#fff}
+.reta .btn-primary:hover{background:var(--green-2);transform:translateY(-1px)}
+.reta .btn-ghost{border-color:var(--line);color:var(--ink);background:transparent}
+.reta .btn-ghost:hover{border-color:var(--green);color:var(--green)}
+.reta /* barre d'info */
+.notice{background:var(--ink);color:rgba(255,255,255,.78);font-size:12.5px;text-align:center;padding:9px 16px;letter-spacing:.01em}
+.reta /* nav */
+nav{position:sticky;top:0;z-index:50;background:rgba(247,248,246,.9);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.reta /* hero */
+.hero{padding-top:clamp(40px,6vw,80px);padding-bottom:clamp(40px,6vw,72px)}
+.reta .hero-grid{display:grid;grid-template-columns:1.05fr 1fr;grid-template-areas:"text img" "cta img";column-gap:clamp(28px,5vw,64px);row-gap:0;align-items:center}
+.reta .h-text{grid-area:text;align-self:end}
+.reta .h-cta{grid-area:cta;align-self:start}
+.reta .hero h1{margin:16px 0 20px}
+.reta .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.reta .facts{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:34px;padding-top:24px;border-top:1px solid var(--line);font-size:13px;color:var(--mute)}
+.reta .facts span::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--green);margin-right:9px;vertical-align:middle}
+.reta .hero-img{grid-area:img;border-radius:20px;overflow:hidden;box-shadow:0 24px 60px rgba(8,8,8,.12);background:#dfe6e3}
+.reta .hero-img img{width:100%;aspect-ratio:16/11;object-fit:cover;object-position:100% 50%}
+.reta /* produit */
+#produit{background:#fff;border-block:1px solid var(--line)}
+.reta .prod-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(28px,5vw,72px);align-items:start;margin-top:40px}
+.reta .prod-img{background:linear-gradient(160deg,#f1f4f2,#e4eae7);border-radius:20px;padding:clamp(20px,3vw,40px)}
+.reta .prod-img img{margin:0 auto;max-height:520px;width:auto;mix-blend-mode:multiply}
+.reta .spec{width:100%;border-collapse:collapse;font-size:14.5px}
+.reta .spec th,.reta .spec td{text-align:left;padding:13px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.reta .spec th{width:38%;font-weight:500;color:var(--mute);padding-right:18px}
+.reta .spec td{font-weight:500}
+.reta .quote-box{margin-top:28px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding:20px 22px;border:1px solid var(--line);border-radius:var(--r);background:var(--bg)}
+.reta .quote-box .p{font-size:22px;font-weight:700;letter-spacing:-.02em}
+.reta .quote-box .s{font-size:13px;color:var(--mute);margin-top:2px}
+.reta .note{margin-top:22px;padding:15px 18px;border-radius:12px;background:var(--warn-bg);border:1px solid var(--warn-line);color:var(--warn-ink);font-size:13.5px;line-height:1.55}
+.reta /* contexte */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,72px);align-items:start}
+.reta .refs{list-style:none;margin-top:6px}
+.reta .refs li{padding:16px 0;border-bottom:1px solid var(--line);font-size:14.5px;color:var(--mute)}
+.reta .refs li b{display:block;color:var(--ink);font-weight:600;margin-bottom:3px}
+.reta /* cartes */
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:40px}
+.reta .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px}
+.reta .card .ic{width:38px;height:38px;border-radius:10px;background:var(--green-soft);color:var(--green);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;margin-bottom:16px}
+.reta .card p{font-size:14px;color:var(--mute);margin-top:8px}
+.reta .tag{display:inline-block;margin-top:14px;font-size:11.5px;font-weight:600;color:var(--green);background:var(--green-soft);padding:4px 10px;border-radius:999px}
+.reta /* process */
+#process{background:var(--ink);color:#fff}
+.reta #process .eyebrow{color:#7fd1b3}
+.reta #process .lead{color:rgba(255,255,255,.62)}
+.reta .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.12);border-radius:var(--r);overflow:hidden;margin-top:40px}
+.reta .step{background:#101312;padding:28px 24px}
+.reta .step .n{font-size:13px;font-weight:600;color:#7fd1b3;letter-spacing:.1em}
+.reta .step h3{margin:10px 0 8px;color:#fff}
+.reta .step p{font-size:14px;color:rgba(255,255,255,.62)}
+.reta /* conditions */
+.rules{list-style:none;margin-top:8px}
+.reta .rules li{display:flex;gap:14px;padding:15px 0;border-bottom:1px solid var(--line);font-size:15px}
+.reta .rules li::before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:var(--green);margin-top:9px}
+.reta /* formulaire */
+#acces{background:#fff;border-top:1px solid var(--line)}
+.reta .form-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(28px,5vw,72px);align-items:start}
+.reta form{background:var(--bg);border:1px solid var(--line);border-radius:20px;padding:clamp(20px,3vw,36px)}
+.reta .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.reta .f{margin-bottom:16px}
+.reta label.l{display:block;font-size:12.5px;font-weight:600;color:var(--mute);margin-bottom:6px;letter-spacing:.01em}
+.reta input[type=text],.reta input[type=email],.reta input[type=tel],.reta select,.reta textarea{width:100%;font:400 15px 'Inter',sans-serif;padding:12px 14px;border-radius:10px;border:1.5px solid var(--line);background:#fff;color:var(--ink)}
+.reta textarea{min-height:112px;resize:vertical}
+.reta input:focus,.reta select:focus,.reta textarea:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px var(--green-soft)}
+.reta .check{display:flex;gap:12px;align-items:flex-start;font-size:13.5px;color:var(--ink);line-height:1.5;padding:14px 16px;border:1.5px solid var(--line);border-radius:12px;background:#fff;margin:6px 0 18px}
+.reta .check input{margin-top:3px;width:18px;height:18px;accent-color:var(--green);flex:none}
+.reta .ok{display:none;padding:28px;border-radius:16px;background:var(--green-soft);border:1px solid rgba(13,79,60,.25)}
+.reta .ok.show{display:block}
+.reta .err{display:none;margin-top:12px;font-size:13.5px;color:#8a1f1f}
+.reta .err.show{display:block}
+.reta .fine{font-size:12.5px;color:var(--mute-2);margin-top:14px}
+.reta /* faq */
+details{border-bottom:1px solid var(--line)}
+.reta summary{list-style:none;cursor:pointer;padding:19px 0;font-weight:600;font-size:16px;display:flex;justify-content:space-between;gap:16px}
+.reta summary::-webkit-details-marker{display:none}
+.reta summary::after{content:"+";font-weight:400;font-size:22px;color:var(--mute-2);line-height:1}
+.reta details[open] summary::after{content:"–"}
+.reta details p{padding:0 0 20px;color:var(--mute);font-size:15px;max-width:68ch}
+.reta /* footer */
+footer{background:var(--ink);color:rgba(255,255,255,.55);padding:48px 0 36px;font-size:13px}
+.reta footer .top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;padding-bottom:26px;border-bottom:1px solid rgba(255,255,255,.12)}
+.reta footer a{color:rgba(255,255,255,.85)}
+.reta footer .legal{margin-top:22px;line-height:1.7;max-width:96ch}
+.reta /* responsive */
+@media(max-width:960px){
+  .prod-grid,.two,.form-grid{grid-template-columns:1fr}
+  .hero-grid{grid-template-columns:1fr;grid-template-areas:"text" "img" "cta";row-gap:26px}
+  .h-text,.h-cta{align-self:auto}
+  .cards,.steps{grid-template-columns:1fr 1fr}
+  .links{display:none}
+  .prod-img img{max-height:420px}
+}
+@media(max-width:560px){.reta .cards,.reta .steps,.reta .row{grid-template-columns:1fr}
+.reta .cta-row .btn{width:100%}
+.reta .spec th{width:42%}
+.reta .quote-box{flex-direction:column;align-items:stretch}
+.reta .quote-box .btn{width:100%}}
+.reta .wrap{max-width:var(--max);margin:0 auto;padding:0 clamp(18px,4vw,40px)}
+.reta section{scroll-margin-top:96px;margin:0}
+.reta h1,.reta h2,.reta h3{font-family:inherit;color:inherit;text-transform:none;margin-bottom:0}
+.reta p{margin-bottom:0}
+.reta ul,.reta ol{margin-left:0;padding-left:0}
+.reta table{table-layout:auto}
+.reta input,.reta select,.reta textarea{box-shadow:none;margin:0}
+.reta .btn{box-sizing:border-box;text-decoration:none}
+.reta details>summary{margin:0}
+
+{% endraw %}
+</style>
+
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="h-text">
+      <span class="eyebrow">Fournisseur de composés de recherche</span>
+      <h1>Peptides de recherche pour laboratoires.</h1>
+      <p class="lead">Réta met à disposition des institutions académiques, des CRO et des laboratoires R&amp;D des composés peptidiques destinés exclusivement à la recherche in vitro. L'accès est ouvert après vérification de votre structure.</p>
+    </div>
+    <div class="hero-img">
+      <img src="{{ 'reta-hero.jpg' | asset_url }}" alt="Laboratoire de recherche avec flacon et boîte Réta Retatrutide 10 mg" width="1400" height="788">
+    </div>
+    <div class="h-cta">
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#acces">Demander un accès professionnel</a>
+        <a class="btn btn-ghost" href="#produit">Voir la fiche technique</a>
+      </div>
+      <div class="facts">
+        <span>Usage in vitro uniquement</span>
+        <span>Comptes professionnels vérifiés</span>
+        <span>Livraison à adresse institutionnelle</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="produit">
+  <div class="wrap">
+    <span class="eyebrow">Catalogue</span>
+    <h2>Retatrutide — 10&nbsp;mg</h2>
+    <p class="lead" style="margin-top:12px">Peptide de recherche, poudre lyophilisée. Fiche technique.</p>
+    <div class="prod-grid">
+      <div class="prod-img">
+        <img src="{{ 'reta-pack.jpg' | asset_url }}" alt="Flacon et boîte Réta Retatrutide 10 mg, réservé à la recherche" width="820" height="1025">
+      </div>
+      <div>
+        <table class="spec">
+          <tr><th>Désignation</th><td>Retatrutide (LY3437943)</td></tr>
+          <tr><th>Classe</th><td>Peptide agoniste des récepteurs GIP, GLP-1 et glucagon</td></tr>
+          <tr><th>Format</th><td>10&nbsp;mg · poudre lyophilisée</td></tr>
+          <tr><th>Pureté (spécification)</th><td>≥&nbsp;99&nbsp;% (HPLC)</td></tr>
+          <tr><th>Conservation recommandée</th><td>−20&nbsp;°C, à l'abri de la lumière et de l'humidité</td></tr>
+          <tr><th>Statut réglementaire</th><td>Composé expérimental — aucune autorisation de mise sur le marché</td></tr>
+          <tr><th>Usage autorisé</th><td>Recherche in vitro en laboratoire uniquement</td></tr>
+          <tr><th>Documentation</th><td>COA par lot et SDS, transmis après ouverture de compte</td></tr>
+        </table>
+        <div class="quote-box">
+          <div><div class="p">Sur devis</div><div class="s">Tarifs de volume sur demande · après vérification du compte</div></div>
+          <a class="btn btn-primary" href="#acces">Demander un devis</a>
+        </div>
+        <div class="note"><b>Usage restreint.</b> Ce produit n'est ni un médicament, ni un complément alimentaire, ni un produit destiné à la consommation. Il ne doit être ni administré, ni injecté, ni ingéré par l'humain ou l'animal.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contexte">
+  <div class="wrap two">
+    <div>
+      <span class="eyebrow">Contexte scientifique</span>
+      <h2>Un composé décrit dans la littérature</h2>
+      <p class="lead" style="margin-top:16px">Le retatrutide (LY3437943) est un peptide qui agit sur trois récepteurs : GIP, GLP-1 et glucagon. Il fait l'objet de publications scientifiques. Les références ci-contre sont fournies à titre documentaire.</p>
+      <div class="note">Aucune allégation d'efficacité, de sécurité ou d'usage thérapeutique n'est faite pour les produits fournis par Réta.</div>
+    </div>
+    <ul class="refs">
+      <li><b>Coskun T. et al., Cell Metabolism 2022 ; 34(9) : 1234–1247</b>LY3437943, a novel triple glucagon, GIP, and GLP-1 receptor agonist: from discovery to clinical proof of concept.</li>
+      <li><b>Jastreboff A.M. et al., N Engl J Med 2023 ; 389 : 514–526</b>Triple–Hormone-Receptor Agonist Retatrutide for Obesity — A Phase 2 Trial.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="documentation" style="background:#fff;border-block:1px solid var(--line)">
+  <div class="wrap">
+    <span class="eyebrow">Documentation</span>
+    <h2>Documents techniques</h2>
+    <p class="lead" style="margin-top:12px">Transmis aux comptes professionnels validés.</p>
+    <div class="cards">
+      <div class="card"><div class="ic">COA</div><h3>Certificat d'analyse</h3><p>Résultats analytiques par lot : pureté HPLC et identité.</p><span class="tag">Après ouverture de compte</span></div>
+      <div class="card"><div class="ic">SDS</div><h3>Fiche de données de sécurité</h3><p>Informations de sécurité pour la manipulation en laboratoire.</p><span class="tag">Après ouverture de compte</span></div>
+      <div class="card"><div class="ic">TDS</div><h3>Spécifications techniques</h3><p>Format, conditionnement, conditions de conservation.</p><span class="tag">Après ouverture de compte</span></div>
+      <div class="card"><div class="ic">LOT</div><h3>Traçabilité</h3><p>Numéro de lot reporté sur le flacon et sur la documentation.</p><span class="tag">Sur demande</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="wrap">
+    <span class="eyebrow">Processus</span>
+    <h2>Du premier contact à la livraison</h2>
+    <p class="lead" style="margin-top:12px">Chaque compte est vérifié avant toute commande.</p>
+    <div class="steps">
+      <div class="step"><div class="n">01</div><h3>Demande d'accès</h3><p>Vous renseignez votre structure et votre projet de recherche.</p></div>
+      <div class="step"><div class="n">02</div><h3>Vérification</h3><p>Contrôle de l'entité, de l'adresse professionnelle et de l'usage prévu.</p></div>
+      <div class="step"><div class="n">03</div><h3>Devis &amp; documents</h3><p>Devis, COA et SDS transmis aux comptes validés.</p></div>
+      <div class="step"><div class="n">04</div><h3>Commande &amp; livraison</h3><p>Règlement selon les modalités du devis, expédition à adresse institutionnelle.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="conditions">
+  <div class="wrap two">
+    <div>
+      <span class="eyebrow">Conditions d'accès</span>
+      <h2>Qui peut commander</h2>
+      <p class="lead" style="margin-top:16px">Nos produits sont réservés à un usage professionnel de recherche. Nous refusons toute demande qui ne remplit pas ces conditions.</p>
+    </div>
+    <ul class="rules">
+      <li>Vente exclusive à des entités professionnelles : institutions académiques, CRO, laboratoires R&amp;D.</li>
+      <li>Vérification de l'entité (numéro d'enregistrement ou de TVA) et de l'adresse professionnelle.</li>
+      <li>Livraison à une adresse institutionnelle uniquement — aucune livraison à des particuliers.</li>
+      <li>Usage exclusivement in vitro. Aucune administration à l'humain ou à l'animal.</li>
+      <li>L'acheteur reste responsable du respect de la réglementation locale applicable à l'importation, à la détention et à l'utilisation.</li>
+      <li>Réta se réserve le droit de refuser ou d'annuler toute commande.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="acces">
+  <div class="wrap form-grid">
+    <div>
+      <span class="eyebrow">Accès professionnel</span>
+      <h2>Demander l'ouverture d'un compte</h2>
+      <p class="lead" style="margin-top:16px">Renseignez votre structure et votre projet. Nous revenons vers vous à votre adresse email professionnelle.</p>
+      <p class="fine">Contact : <a href="mailto:contact@mpbiolab.com">contact@mpbiolab.com</a></p>
+    </div>
+    <div>
+      {%- form 'contact', id: 'reta-contact' -%}
+        {%- if form.posted_successfully? -%}
+          <div class="ok show" role="status"><h3>Demande bien reçue</h3><p style="margin-top:8px;color:var(--mute)">Nous vérifions votre structure et revenons vers vous à votre adresse email professionnelle.</p></div>
+        {%- else -%}
+          {%- if form.errors -%}<div class="err show" style="display:block;margin-bottom:14px">{{ form.errors | default_errors }}</div>{%- endif -%}
+          <div class="row">
+            <div class="f"><label class="l" for="institution">Institution / société *</label><input type="text" id="institution" name="contact[Institution]" required autocomplete="organization"></div>
+            <div class="f"><label class="l" for="type">Type de structure *</label>
+              <select id="type" name="contact[Type de structure]" required><option value="">Choisir…</option><option>Université / institut de recherche</option><option>CRO</option><option>Laboratoire R&amp;D industriel</option><option>Autre structure professionnelle</option></select></div>
+          </div>
+          <div class="row">
+            <div class="f"><label class="l" for="regnum">N° d'enregistrement / TVA *</label><input type="text" id="regnum" name="contact[Numero enregistrement ou TVA]" required></div>
+            <div class="f"><label class="l" for="country">Pays *</label><input type="text" id="country" name="contact[Pays]" required autocomplete="country-name"></div>
+          </div>
+          <div class="f"><label class="l" for="address">Adresse professionnelle de livraison *</label><input type="text" id="address" name="contact[Adresse professionnelle]" required autocomplete="street-address"></div>
+          <div class="row">
+            <div class="f"><label class="l" for="cname">Nom du contact *</label><input type="text" id="cname" name="contact[name]" required autocomplete="name"></div>
+            <div class="f"><label class="l" for="role">Fonction *</label><input type="text" id="role" name="contact[Fonction]" required autocomplete="organization-title"></div>
+          </div>
+          <div class="row">
+            <div class="f"><label class="l" for="email">Email professionnel *</label><input type="email" id="email" name="contact[email]" required autocomplete="email"></div>
+            <div class="f"><label class="l" for="phone">Téléphone</label><input type="tel" id="phone" name="contact[phone]" autocomplete="tel"></div>
+          </div>
+          <div class="f"><label class="l" for="qty">Besoin estimé (quantité, fréquence)</label><input type="text" id="qty" name="contact[Besoin estime]"></div>
+          <div class="f"><label class="l" for="project">Projet de recherche in vitro envisagé *</label><textarea id="project" name="contact[body]" required></textarea></div>
+          <label class="check"><input type="checkbox" name="contact[Attestation usage]" value="Attestation : entite professionnelle, usage exclusivement in vitro en laboratoire, jamais administre a l'humain ou a l'animal" required>
+            <span>J'atteste agir pour le compte d'une entité professionnelle et que le produit sera utilisé exclusivement à des fins de recherche in vitro en laboratoire, sans jamais être administré à l'humain ou à l'animal.</span></label>
+          <button class="btn btn-primary" type="submit" style="width:100%">Envoyer la demande</button>
+          <p class="fine">Les informations transmises servent uniquement à vérifier votre éligibilité.</p>
+        {%- endif -%}
+      {%- endform -%}
+    </div>
+  </div>
+</section>
+
+<section id="faq" style="padding-top:0">
+  <div class="wrap" style="max-width:860px">
+    <span class="eyebrow">FAQ</span>
+    <h2 style="margin-bottom:20px">Questions fréquentes</h2>
+    <details><summary>Qui peut acheter chez Réta ?</summary><p>Uniquement des entités professionnelles menant de la recherche en laboratoire : institutions académiques, CRO, laboratoires R&amp;D. Nous ne vendons pas aux particuliers.</p></details>
+    <details><summary>Pourquoi un compte vérifié est-il nécessaire ?</summary><p>Le produit est réservé à un usage de recherche in vitro. Nous vérifions l'entité, l'adresse de livraison et l'usage prévu avant toute commande.</p></details>
+    <details><summary>Quels documents sont fournis ?</summary><p>Certificat d'analyse par lot, fiche de données de sécurité et spécifications techniques, transmis aux comptes validés.</p></details>
+    <details><summary>Les prix sont-ils publics ?</summary><p>Non. Les tarifs, y compris les tarifs de volume, sont communiqués sur devis après vérification du compte.</p></details>
+    <details><summary>Le produit peut-il être utilisé sur l'humain ou l'animal ?</summary><p>Non. Le produit est destiné exclusivement à la recherche in vitro en laboratoire. Il n'est pas autorisé comme médicament et ne doit être ni administré ni consommé.</p></details>
+    <details><summary>Comment s'effectue le règlement ?</summary><p>Les modalités de règlement sont précisées sur le devis transmis aux comptes validés.</p></details>
+  </div>
+</section>
+
+
+</div>
+{% schema %}
+{"name": "Réta B2B", "settings": [], "presets": [{"name": "Réta B2B"}]}
+{% endschema %}
