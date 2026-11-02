@@ -1265,9 +1265,9 @@ div > a[href*="netlify.com"][style*="position:fixed"],
 
       <!-- Montant -->
       <div style="background:linear-gradient(135deg,#1d6e3f,#2db567);border-radius:14px;padding:20px 24px;margin-bottom:20px;text-align:center">
-        <div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:6px">Montant à envoyer</div>
+        <div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:6px" id="payLabel">Montant à envoyer</div>
         <div style="font-size:36px;font-weight:700;color:#fff;letter-spacing:-.02em" id="usdAmt">—</div>
-        <div style="font-size:12px;color:rgba(255,255,255,.6);margin-top:4px">USDT ou USDC · 1€ ≈ 1.08 USDT</div>
+        <div style="font-size:12px;color:rgba(255,255,255,.6);margin-top:4px" id="paySub">USDT ou USDC · 1€ ≈ 1.08 USDT</div>
       </div>
 
       <!-- Sécurité -->
@@ -1343,7 +1343,7 @@ div > a[href*="netlify.com"][style*="position:fixed"],
       </div>
 
       <!-- Étapes de paiement -->
-      <div style="background:var(--lgrey);border-radius:12px;padding:16px;margin:16px 0">
+      <div id="cryptoSteps" style="background:var(--lgrey);border-radius:12px;padding:16px;margin:16px 0">
         <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--grey);margin-bottom:12px">Comment payer</div>
         <div style="display:flex;flex-direction:column;gap:10px">
           <div style="display:flex;gap:10px;align-items:flex-start;font-size:13px">
@@ -1362,7 +1362,7 @@ div > a[href*="netlify.com"][style*="position:fixed"],
       </div>
 
       <!-- Guide première fois -->
-      <details style="margin-bottom:14px">
+      <details id="cryptoGuide" style="margin-bottom:14px">
         <summary style="font-size:13px;font-weight:600;cursor:pointer;color:var(--g);padding:10px 14px;background:var(--gdim);border-radius:8px;display:flex;align-items:center;gap:8px;list-style:none">
           🪙 Première fois avec la crypto ? Guide rapide
         </summary>
@@ -1372,9 +1372,9 @@ div > a[href*="netlify.com"][style*="position:fixed"],
         </div>
       </details>
 
-      <div class="warn-box">⚠️ Vérifiez le réseau avant d'envoyer. Erreur de réseau = perte des fonds.</div>
+      <div class="warn-box" id="cryptoWarn">⚠️ Vérifiez le réseau avant d'envoyer. Erreur de réseau = perte des fonds.</div>
 
-      <button class="co-btn" onclick="doConfirm()" style="margin-top:16px">✓ J'ai effectué le paiement</button>
+      <button class="co-btn" id="payConfirmBtn" onclick="doConfirm()" style="margin-top:16px">✓ J'ai effectué le paiement</button>
       <button class="ghost-btn" onclick="goStep(2)">← Retour</button>
     </div>
     <div class="co-bd" id="s4" style="display:none">
@@ -1492,6 +1492,7 @@ function goStep(n){
   });
   const T={1:'Commander',2:'Livraison',3:'Paiement',4:'Confirmation'};
   document.getElementById('coTitle').textContent=T[n]||'';
+  if(n===3)payMode(payNet);
 }
 function onDosage(){const v=parseInt(document.getElementById('coDosage').value);price=v;document.getElementById('coDispPrice').textContent='€'+v;document.getElementById('coSub').textContent='Retatrutide · €'+v;}
 function goPayment(){
@@ -1504,16 +1505,33 @@ function goPayment(){
   if(el_step)el_step.textContent=usdtAmt+' USDT/USDC';
   goStep(3);
 }
-function selAddr(n){document.getElementById('optSol').classList.toggle('sel',n==='SOL');document.getElementById('optEth').classList.toggle('sel',n==='ETH');document.querySelectorAll('.addr-opt input').forEach((r,i)=>r.checked=(n==='SOL'?i===0:i===1));}
+let payNet='SOL';
+function payMode(n){
+  const bank=(n==='BANK');
+  const set=(id,t)=>{const e=document.getElementById(id);if(e)e.textContent=t};
+  set('payLabel',bank?'Montant du virement':'Montant à envoyer');
+  set('usdAmt',bank?('€'+price):((price*1.08).toFixed(2)+' USDT'));
+  set('paySub',bank?'Coordonnées bancaires envoyées par notre support Telegram':'USDT ou USDC · 1€ ≈ 1.08 USDT');
+  set('payConfirmBtn',bank?'✓ Valider ma commande':"✓ J'ai effectué le paiement");
+  ['cryptoSteps','cryptoGuide','cryptoWarn'].forEach(id=>{const e=document.getElementById(id);if(e)e.style.display=bank?'none':''});
+}
+function selAddr(n){
+  const ids={SOL:'optSol',ETH:'optEth',TRX:'optTrx',BANK:'optBank'};
+  if(!ids[n])return;
+  payNet=n;
+  Object.keys(ids).forEach(k=>{
+    const el=document.getElementById(ids[k]);if(!el)return;
+    el.classList.toggle('sel',k===n);
+    const r=el.querySelector('input[type=radio]');if(r)r.checked=(k===n);
+  });
+  payMode(n);
+}
 function doCopy(t){navigator.clipboard.writeText(t).then(()=>showToast('Adresse copiée ✓'))}
 async function doConfirm(){
   // Générer un N° de commande unique
   const orderId='RETA-'+Date.now().toString(36).toUpperCase().slice(-6)+'-'+Math.random().toString(36).toUpperCase().slice(2,5);
   // Déterminer le mode de paiement
-  let net='Solana USDC';
-  if(document.getElementById('optEth')?.classList.contains('sel'))net='Ethereum ERC-20';
-  if(document.getElementById('optTrx')?.classList.contains('sel'))net='Tron TRC-20';
-  if(document.getElementById('optBank')?.classList.contains('sel'))net='Virement bancaire';
+  const net={SOL:'Solana USDC',ETH:'Ethereum ERC-20',TRX:'Tron TRC-20',BANK:'Virement bancaire'}[payNet]||'Solana USDC';
   const usd=(price*1.08).toFixed(2);
   const name=document.getElementById('fn').value+' '+document.getElementById('ln').value;
   const em=document.getElementById('em').value;
