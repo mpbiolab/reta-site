@@ -85,7 +85,3 @@ jobs:
                   f"Mark published: {article['slug']}", plan_sha)
           print("Planning mis a jour")
           PYEOF
-
-      - name: Notify Telegram
-        run: |
-          curl -s "https://api.telegram.org/bot8935642736:AAEshFfBqT7dOTq1TFV7JhPn5ATiqUQtFAM/sendMessage?chat_id=1465507713&text=✅+Article+SEO+publie+sur+reta.com"
