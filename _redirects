@@ -1,0 +1,6 @@
+# Fichiers internes : ne doivent pas être accessibles publiquement
+/articles_queue/*  /404.html  404!
+/planning.json     /404.html  404!
+/README.md         /404.html  404!
+/.github/*         /404.html  404!
+/netlify/*         /404.html  404!
