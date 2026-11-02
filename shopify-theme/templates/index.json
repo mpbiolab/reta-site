@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "reta": {
+      "type": "reta-b2b",
+      "settings": {}
+    }
+  },
+  "order": [
+    "reta"
+  ]
+}
