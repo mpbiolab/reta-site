@@ -1,0 +1,36 @@
+{
+  "type": "footer",
+  "name": "Footer group",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "reta-text": {
+          "type": "text",
+          "settings": {
+            "column_size": "large",
+            "text_alignment": "left",
+            "title": "",
+            "text": "<p><strong>RÉTA · Research Performance</strong></p><p>Produits destinés exclusivement à la recherche in vitro en laboratoire, par des professionnels qualifiés. Non destinés à un usage humain ou vétérinaire, ni à un usage diagnostique, thérapeutique, alimentaire ou cosmétique. Composés expérimentaux non autorisés comme médicaments. Aucune allégation d'efficacité ou de sécurité n'est faite.</p><p>Contact : contact@mpbiolab.com</p>",
+            "text_size": "medium",
+            "show_social_links": false
+          }
+        }
+      },
+      "block_order": [
+        "reta-text"
+      ],
+      "settings": {
+        "footer_reveal_animation": true,
+        "copyright_text": "© 2026 Réta. Réservé à un usage professionnel de recherche.",
+        "show_language_switcher": false,
+        "show_currency_switcher": false,
+        "show_payment_icons": false,
+        "enable_follow_on_shop": false
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}
