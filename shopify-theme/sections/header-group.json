@@ -1,0 +1,67 @@
+{
+  "type": "header",
+  "name": "Header group",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "reta-notice": {
+          "type": "text",
+          "settings": {
+            "text": "Réservé aux professionnels · Usage in vitro en laboratoire uniquement · Non destiné à l'homme ni à l'animal",
+            "link": "",
+            "color_bg": "#080808",
+            "color_text": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "reta-notice"
+      ],
+      "settings": {
+        "announcement_bar": true,
+        "announcement_bar_homepage_only": false,
+        "announcement_bar_layout": "carousel",
+        "direction": "left",
+        "speed": "20s",
+        "use_block_colors": true,
+        "autoplay": false,
+        "autoplay_length": 5
+      }
+    },
+    "header": {
+      "type": "header",
+      "blocks": {},
+      "block_order": [],
+      "settings": {
+        "sticky_header": true,
+        "full_width": false,
+        "logo_height_range": 26,
+        "logo_height_range_mobile": 26,
+        "style": "style5",
+        "header_shadow": "header--shadow-small",
+        "menu": "main-menu",
+        "cart_icon": "cart",
+        "minimized_search": false,
+        "transparent_header": false,
+        "show_social_links": false,
+        "show_language_switcher": false,
+        "show_currency_switcher": false,
+        "show_shopify_account_menu": false
+      }
+    },
+    "header-mobile-navigation": {
+      "type": "header-mobile-navigation",
+      "settings": {
+        "mobile_nav": "main-menu",
+        "color_links": "#ffffff",
+        "color_bg": "#919999"
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "header",
+    "header-mobile-navigation"
+  ]
+}
